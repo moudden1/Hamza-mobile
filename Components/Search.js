@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, TextInput, FlatList, Text} from 'react-native'
 import sales from '../Data/saleData.js'
+import SaleItem from './Sales.js'
 class Search extends React.Component {
     render(){
         return (
@@ -9,7 +10,7 @@ class Search extends React.Component {
                 <FlatList
                     data={sales}
                     keyExtractor={(item) => item.id.toString()}
-                    renderItem={({item}) => <Text>{item.title}</Text>}
+                    renderItem={({item}) => <SaleItem sale={item}/>}
                 />
             </View>
         )
