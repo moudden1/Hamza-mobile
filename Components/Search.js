@@ -1,12 +1,16 @@
 import React from 'react'
-import { StyleSheet, View, TextInput, Button} from 'react-native'
-
+import { StyleSheet, View, TextInput, FlatList, Text} from 'react-native'
+import sales from '../Data/saleData.js'
 class Search extends React.Component {
     render(){
         return (
             <View style={styles.main_container}>
-                <TextInput placeholder="search ..." style={styles.textinput}/>
-                <Button title="Search" onPress={() => {}}/>
+                <TextInput placeholder="Search ..." style={styles.textinput}/>
+                <FlatList
+                    data={sales}
+                    keyExtractor={(item) => item.id.toString()}
+                    renderItem={({item}) => <Text>{item.title}</Text>}
+                />
             </View>
         )
     }   
@@ -19,9 +23,12 @@ const styles = StyleSheet.create({
     },
     textinput: {
         marginLeft: 5,
-        marginRight: 5,
-        height: 50,
-        paddingLeft: 5
+        marginRight: 15,
+        borderColor: 'rgb(128,128,128)',
+        borderWidth: 1,
+        height: 40,
+        paddingLeft: 5,
+        fontWeight: 'bold'
       }
 })
 export default Search
