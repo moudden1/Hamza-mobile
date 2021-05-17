@@ -6,7 +6,7 @@ class Search extends React.Component {
     render(){
         return (
             <View style={styles.main_container}>
-                <TextInput placeholder="Search ..." style={styles.textinput}/>
+                <TextInput placeholder="Search ..." style={styles.textinput} onSubmitEditing={()=>console.log("searching ...")}/>
                 <FlatList
                     data={sales}
                     keyExtractor={(item) => item.id.toString()}
