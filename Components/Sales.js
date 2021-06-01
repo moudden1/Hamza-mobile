@@ -1,25 +1,23 @@
 import React from 'react'
-import { StyleSheet, View, Text, Image} from 'react-native'
+import { StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native'
 
-const SaleItem = sale => {
-    const saleObject = sale["sale"];
-    console.log('sale : ', saleObject );
+const SaleItem = ({sale, displayDetailForSale}) => {
         return (
-            <View style={styles.main_container}>
+            <TouchableOpacity style={styles.main_container} onPress={() => displayDetailForSale(sale.id)}>
                 <Image style={styles.image_sale} source={{uri: 'image'}} />
                 <View style={styles.content_container}>
                 <View style={styles.header_container}>
-                <Text style={styles.title_sale} numberOfLines={1}>{saleObject.title}</Text>
+                <Text style={styles.title_sale} numberOfLines={1}>{sale.title}</Text>
                 </View>
                 <View style={styles.price_container}>
-                <Text style={styles.price_sale} numberOfLines={1}>{saleObject.price}€</Text>
+                <Text style={styles.price_sale} numberOfLines={1}>{sale.price}€</Text>
                 </View>
                 <View style={styles.footer_container}>
-                    <Text style={styles.city_sale}>{saleObject.city}</Text>
-                    <Text style={styles.date_sale}>{saleObject.publication_date}</Text>
+                    <Text style={styles.city_sale}>{sale.city}</Text>
+                    <Text style={styles.date_sale}>{sale.publication_date}</Text>
                 </View>
                 </View>
-            </View>
+            </TouchableOpacity>
         )
 }
 
