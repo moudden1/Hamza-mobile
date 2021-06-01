@@ -1,29 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { StyleSheet, View, TextInput, FlatList, Text, Image, ImageBackground} from 'react-native'
 import sales from '../Data/saleData.js'
 import SaleItem from './Sales.js'
-//TODO :  in case he didn't't write anything ! 
 const Search = () =>  {
-    const [_sales, setSales] = useState([]);
-    // i can do it as a simple var (what is better ? )
-    const [_textInput, setTextInput] = useState("");
-    const _loadSales = () => {
-        console.log("loading sales for "+_textInput+" ....");
-        // filter
-        setSales([...sales]);
-    }
-    const renderItem = ({item}) =>  <SaleItem sale={item} />;
-
         return (
             <View style={styles.main_container}>
                 <View style={styles.header_container}>
-                <TextInput placeholder="Search ..." style={styles.textinput} onChangeText={(text) => setTextInput(text)} onSubmitEditing={()=>_loadSales()}/>
+                <TextInput placeholder="Search ..." style={styles.textinput} />
                 <Image style={styles.image} source={require("../assets/square.png")} />
                 </View>
-                                {_sales.length > 0 ? <FlatList data={_sales} keyExtractor={item => item.id.toString()} renderItem={renderItem}/> 
-
-                                                                     : <Text>No result</Text>}
-
+                <FlatList data={sales} keyExtractor={(item) => {item.id.toString()}} renderItem={ ({item}) => <SaleItem sale={item} /> } />
             </View>
         )
     }   
