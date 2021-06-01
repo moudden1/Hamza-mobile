@@ -1,10 +1,9 @@
 import React from 'react'
-import { StyleSheet, View, Text, Image} from 'react-native'
+import { StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native'
 
-const SaleItem = ({sale}) => {
-
+const SaleItem = ({sale, displayDetailForSale}) => {
         return (
-            <View style={styles.main_container}>
+            <TouchableOpacity style={styles.main_container} onPress={() => displayDetailForSale(sale.id)}>
                 <Image style={styles.image_sale} source={{uri: 'image'}} />
                 <View style={styles.content_container}>
                 <View style={styles.header_container}>
@@ -18,7 +17,7 @@ const SaleItem = ({sale}) => {
                     <Text style={styles.date_sale}>{sale.publication_date}</Text>
                 </View>
                 </View>
-            </View>
+            </TouchableOpacity>
         )
 }
 
