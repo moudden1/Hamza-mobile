@@ -12,15 +12,18 @@ const Search = ({navigation}) =>  {
   
     const _loadSales = () => {
         console.log("loading sales for "+_textInput+" ....");
-        // filter
-        setSales([...sales]);
+        var i;
+        var temp = [];
+        var motif = new RegExp(_textInput,"igm");
+        temp = sales.reduce((acc, sale) => (motif.test(sale.title) || motif.test(sale.description)) ? acc.concat(sale) : acc, []); 
+        setSales(temp);
     }
   
     const renderItem = ({item}) =>  <SaleItem sale={item} displayDetailForSale={_displayDetailForSale}/>;
   
-    const _displayDetailForSale = (idSale) => {
+    const _displayDetailForSale = (idSale,title,price, description, publication_date, city) => {
         console.log("Display sale with id " + idSale);
-        navigation.navigate("SaleDetail",{ idSale: idSale});
+        navigation.navigate("SaleDetail",{ idSale: idSale, title : title, price : price , description : description, publication_date : publication_date, city : city});
     }
 
 
@@ -43,7 +46,7 @@ const Search = ({navigation}) =>  {
 const styles = StyleSheet.create({
     main_container:  {
         flex: 1,
-        marginTop: 10
+        marginTop: 15
     },
     header_container: {
         flexDirection: 'row',
@@ -58,6 +61,7 @@ const styles = StyleSheet.create({
         flex :6,
         marginLeft: 5,
         marginRight: 10,
+        marginBottom: 10,
         borderColor: 'rgb(128,128,128)',
         borderWidth: 1,
         height: 40,
