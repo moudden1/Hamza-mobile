@@ -12,7 +12,6 @@ const Search = ({navigation}) =>  {
   
     const _loadSales = () => {
         console.log("loading sales for "+_textInput+" ....");
-        var i;
         var temp = [];
         var motif = new RegExp(_textInput,"igm");
         temp = sales.reduce((acc, sale) => (motif.test(sale.title) || motif.test(sale.description)) ? acc.concat(sale) : acc, []); 
