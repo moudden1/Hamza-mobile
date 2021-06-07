@@ -45,7 +45,7 @@ const Search = ({navigation}) =>  {
 const styles = StyleSheet.create({
     main_container:  {
         flex: 1,
-        marginTop: 15
+        marginTop: 50
     },
     header_container: {
         flexDirection: 'row',

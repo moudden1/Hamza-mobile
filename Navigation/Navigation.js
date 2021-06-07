@@ -7,9 +7,10 @@ import Search from '../Components/Search'
 import {  Image, View, Text } from 'react-native'
 
 const SearchStack = createStackNavigator();
+// i can  add some options to improve the style of stack navigator
 const SearchStackNavigator = ()  => {
     return(
-    <SearchStack.Navigator>
+    <SearchStack.Navigator headerMode="none">
         <SearchStack.Screen name="Search" component={Search} /> 
         <SearchStack.Screen name="SaleDetail" component={SaleDetail} /> 
     </SearchStack.Navigator>

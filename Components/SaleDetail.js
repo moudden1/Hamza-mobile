@@ -20,6 +20,7 @@ const SaleDetail = ({route, navigation}) => {
 const styles = StyleSheet.create({
   scrollview_container: {
     flex: 1,
+    marginTop: 37
   }, 
   image_sale: {
     height: 200,
