@@ -1,16 +1,17 @@
 import React from 'react'
-import { StyleSheet, View, Text, ScrollView, Image } from 'react-native'
+import { StyleSheet, Text, ScrollView, Image } from 'react-native'
 
-const SaleDetail = ({navigation}) => {
-
+const SaleDetail = ({route, navigation}) => {
+  // i can do a request by only the id if we had a database 
+  const {idSale, title , price  , description, publication_date , city} = route.params;
   return (
     <ScrollView style={styles.scrollview_container}>
-      <Text style={styles.price_text}>{navigation.state.params.price}€</Text>
+      <Text style={styles.price_text}>{price}€</Text>
       <Image style={styles.image_sale} source={require("../assets/renault.jpeg")} />
-      <Text style={styles.title_text}>{navigation.state.params.title}</Text>
-      <Text style={styles.default_text}>{navigation.state.params.city}</Text>
-      <Text style={styles.default_text}>Posted {navigation.state.params.publication_date}</Text>
-      <Text style={styles.description_text}>{navigation.state.params.description}</Text>
+      <Text style={styles.title_text}>{title}</Text>
+      <Text style={styles.default_text}>{city}</Text>
+      <Text style={styles.default_text}>Posted {publication_date}</Text>
+      <Text style={styles.description_text}>{description}</Text>
 
     </ScrollView>
   )
