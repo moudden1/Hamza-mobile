@@ -1,18 +1,22 @@
 import React from 'react'
-import { StyleSheet, Text, ScrollView, Image } from 'react-native'
+import { StyleSheet, Text, ScrollView, Image, Button } from 'react-native'
+import { connect } from 'react-redux';
 
-const SaleDetail = ({route, navigation}) => {
-  // i can do a request by only the id if we had a database 
-  const {idSale, title , price  , description, publication_date , city} = route.params;
+const SaleDetail = (props) => {
+  const {sale} = props.route.params;
+  console.log(sale)
+  const _toggleFavorite = () =>{
+    const action = { type: "TOGGLE_FAVORITE", value: sale}
+  }
   return (
     <ScrollView style={styles.scrollview_container}>
-      <Text style={styles.price_text}>{price}€</Text>
+      <Text style={styles.price_text}>{sale.price}€</Text>
       <Image style={styles.image_sale} source={require("../assets/renault.jpeg")} />
-      <Text style={styles.title_text}>{title}</Text>
-      <Text style={styles.default_text}>{city}</Text>
-      <Text style={styles.default_text}>Posted {publication_date}</Text>
-      <Text style={styles.description_text}>{description}</Text>
-
+      <Text style={styles.title_text}>{sale.title}</Text>
+      <Text style={styles.default_text}>{sale.city}</Text>
+      <Text style={styles.default_text}>Posted {sale.publication_date}</Text>
+      <Text style={styles.description_text}>{sale.description}</Text>
+    <Button title="Enregistrer" onPress={_toggleFavorite} />
     </ScrollView>
   )
  
@@ -58,5 +62,12 @@ const styles = StyleSheet.create({
   }
 
 })
-export default SaleDetail
+
+const mapStateToProps = (state) => {
+  return {
+    favoriteSales: state.favoritesSales
+  }
+}
+
+export default connect(mapStateToProps)(SaleDetail)
 

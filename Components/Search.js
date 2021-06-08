@@ -20,9 +20,9 @@ const Search = ({navigation}) =>  {
   
     const renderItem = ({item}) =>  <SaleItem sale={item} displayDetailForSale={_displayDetailForSale}/>;
   
-    const _displayDetailForSale = (idSale,title,price, description, publication_date, city) => {
-        console.log("Display sale with id " + idSale);
-        navigation.navigate("SaleDetail",{ idSale: idSale, title : title, price : price , description : description, publication_date : publication_date, city : city});
+    const _displayDetailForSale = (sale) => {
+        console.log("Display sale with id " + sale.id);
+        navigation.navigate("SaleDetail",{ sale: sale });
     }
 
 
