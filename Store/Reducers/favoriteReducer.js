@@ -1,4 +1,4 @@
-const initialState = { favoritesSales: [] }
+/*const initialState = { favoritesSales: [] }
 
 const toggleFavorite = (state = initialState, action) => {
     let nextState;
@@ -28,4 +28,4 @@ const toggleFavorite = (state = initialState, action) => {
     }
 }
 
-export default toggleFavorite
+export default toggleFavorite*/

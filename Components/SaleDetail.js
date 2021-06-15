@@ -5,18 +5,18 @@ import { connect } from 'react-redux';
 const SaleDetail = (props) => {
   const {sale} = props.route.params;
   console.log(sale)
-  const _toggleFavorite = () =>{
+  /*const _toggleFavorite = () =>{
     const action = { type: "TOGGLE_FAVORITE", value: sale}
-  }
+  }*/
   return (
     <ScrollView style={styles.scrollview_container}>
       <Text style={styles.price_text}>{sale.price}€</Text>
-      <Image style={styles.image_sale} source={require("../assets/renault.jpeg")} />
+      <Image style={styles.image_sale} source={sale.path} />
       <Text style={styles.title_text}>{sale.title}</Text>
       <Text style={styles.default_text}>{sale.city}</Text>
       <Text style={styles.default_text}>Posted {sale.publication_date}</Text>
       <Text style={styles.description_text}>{sale.description}</Text>
-    <Button title="Enregistrer" onPress={_toggleFavorite} />
+    <Button title="Enregistrer" onPress={()=>console.log("enregistrer")} />
     </ScrollView>
   )
  
@@ -69,5 +69,5 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(SaleDetail)
+export default SaleDetail
 

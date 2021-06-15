@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native'
 const SaleItem = ({sale, displayDetailForSale}) => {
         return (
             <TouchableOpacity style={styles.main_container} onPress={() => displayDetailForSale(sale)}>
-                <Image style={styles.image_sale} source={{uri: 'image'}} />
+                <Image style={styles.image_sale} source={sale.path} />
                 <View style={styles.content_container}>
                 <View style={styles.header_container}>
                 <Text style={styles.title_sale} numberOfLines={1}>{sale.title}</Text>
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     },
     price_sale : {
     fontSize: 15,
-    color :'orange'
+    color :'#31b472'
     },
     footer_container : {
         flex :1,
